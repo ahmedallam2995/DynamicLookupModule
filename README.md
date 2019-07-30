@@ -10,7 +10,7 @@ and then you will go to views to create some or one view to operate with created
 Okay, Thats fine, I have no problem with that, 
 But if you have another table lets call it **Cities** and you want to create a page to manange it's crud operations, what will you do ? repeat all pervois steps!, Lets not do that.
 
-Using this project you will be able to add any number of lookups tables you want with a vey simple way, _Let's follow the steps_.
+Using this project you will be able to add any number of lookups tables you want with a vey simple way without writing any heavy code or creating any new controllers or views, _Let's follow the steps_.
 
 ## Entity Section
 - Go to _Models_ >> _EntityModels_ and add new class , Lets call it **NewLookupEmaple** it should be inherit from **BaseLookup**
@@ -58,4 +58,4 @@ public enum LookupTypeEnum
 ```
 
 ## Done!
-Thats all, now you can run your application and see the magic happens.
+Thats all, all your new table CRUD operations is created dynamicly, now you can run your application and see the magic happens.
