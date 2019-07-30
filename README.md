@@ -8,18 +8,18 @@ If you have a table in your database called for example **Countries** that has a
 and then you will go to views to create some or one view to operate with created (API/Controller),
 
 Okay, Thats fine, I have no problem with that, 
-But if you have another table lets call it **Cities** and you want to create a page to manange it's crud operations, what will you do ? repeat all pervois steps!, Lets Don't do that.
+But if you have another table lets call it **Cities** and you want to create a page to manange it's crud operations, what will you do ? repeat all pervois steps!, Lets not do that.
 
 Using this project you will be able to add any number of lookups tables you want with a vey simple way, _Let's follow the steps_.
 
 ## Entity Section
-- Go to Models >> EntityModels and add new class , Lets call it **NewLookupEmaple** it should be inherit from **BaseLookup**
+- Go to _Models_ >> _EntityModels_ and add new class , Lets call it **NewLookupEmaple** it should be inherit from **BaseLookup**
 ```
 public class NewLookupEmaple : BaseLookup
 {
 }
 ```
-- Go to Context >> DynamicLookupContext.cs and add your DbSet of your Created Class
+- Go to _Context_ >> _DynamicLookupContext.cs_ and add your DbSet of your Created Class
 ```
 public DbSet<NewLookupEmaple> NewLookupEmaple { get; set; }
 ```
@@ -28,7 +28,7 @@ public DbSet<NewLookupEmaple> NewLookupEmaple { get; set; }
 
 
 ## Enum Section
-- Go to Enums >> LookupEnums.cs and add new item with the same name of the class you created and assign it to unique value
+- Go to _Enums_ >> _LookupEnums.cs_ and add new item with the same name of the class you created and assign it to unique value
 ```
 public enum LookupTypeEnum
 {
@@ -40,8 +40,8 @@ public enum LookupTypeEnum
 
 
 ## UI Section
-- Go to Views >> Lookups >> Lookups.cshtml
-- add a new li related to your new enum property you created
+- Go to _Views_ >> _Lookups_ >> _Lookups.cshtml_
+- add a new _li_ related to your new enum property you created
 ```
 <ul class="lookups">
     <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.LookupEmaple1)')"><b>LookupEmaple1</b></li>
