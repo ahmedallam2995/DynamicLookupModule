@@ -21,7 +21,16 @@ public class NewLookupEmaple : BaseLookup
 ```
 - Go to _Context_ >> _DynamicLookupContext.cs_ and add your DbSet of your Created Class
 ```
-public DbSet<NewLookupEmaple> NewLookupEmaple { get; set; }
+public class DynamicLookupContext : DbContext
+{
+    public DynamicLookupContext(DbContextOptions<DynamicLookupContext> options) : base(options)
+    {
+        Database.Migrate();
+    }
+
+    ...
+    public DbSet<LookupEmaple2> NewLookupEmaple { get; set; }
+}
 ```
 - Open package manager console and type 
 ```add-migration migrationName```
@@ -32,8 +41,7 @@ public DbSet<NewLookupEmaple> NewLookupEmaple { get; set; }
 ```
 public enum LookupTypeEnum
 {
-    LookupEmaple1 = 1,
-    LookupEmaple2 = 2,
+    ...
     NewLookupEmaple = 3,
 }
 ```
@@ -44,8 +52,7 @@ public enum LookupTypeEnum
 - add a new _li_ related to your new enum property you created
 ```
 <ul class="lookups">
-    <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.LookupEmaple1)')"><b>LookupEmaple1</b></li>
-    <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.LookupEmaple2)')"><b>LookupEmaple2</b></li>
+    ...
     <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.NewLookupEmaple)')"><b>NewLookupEmaple</b></li>
 </ul>
 ```
