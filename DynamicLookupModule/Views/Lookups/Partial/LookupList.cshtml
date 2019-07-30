@@ -1,0 +1,38 @@
+﻿@inject LookupService _lookupService
+@model List<BaseLookup>
+@{
+    int TYPE = _lookupService.IdByType(Model.FirstOrDefault());
+}
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <button type="button" class="btn btn-info" onclick="LoadLookupHeader('@TYPE' ,'@item.Id')"><i class="fa fa-edit"></i> Edit</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="DeleteLookup('@TYPE' ,'@item.Id')"><i class="fa fa-close"></i> Remove</button>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

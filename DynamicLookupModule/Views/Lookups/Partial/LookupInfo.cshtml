@@ -1,0 +1,12 @@
+﻿@inject LookupService _lookupService
+@model LookupModel
+@{
+    int TYPE = _lookupService.IdByType(Model.LookupHeader);
+}
+
+<div class="form-group" id="LookupHeader">
+    @await Html.PartialAsync("Partial/LookupHeader", Model.LookupHeader)
+</div>
+<div class="form-group" id="LookupList">
+    @await Html.PartialAsync("Partial/LookupList", Model.LookupList)
+</div>

@@ -1,0 +1,18 @@
+﻿@inject LookupService _lookupService
+@model BaseLookup
+@{
+    int LTYPE = _lookupService.IdByType(Model);
+}
+
+
+<div class="row">
+    <div class="col-4">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="Name" />
+    </div>
+    <div class="col-4">
+        <input type="button" class="btn btn-success" value="Save" onclick="SaveLookup('@LTYPE')" />
+        <input type="button" class="btn btn-warning" value="Clear" onclick="ClearLookupHeader();" />
+    </div>
+</div>
+

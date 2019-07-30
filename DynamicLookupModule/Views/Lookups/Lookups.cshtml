@@ -1,0 +1,89 @@
+﻿@using DynamicLookupModule.Enums
+@{
+    ViewData["Title"] = "Lookups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-2">
+        <h3>Lookups</h3>
+        <ul class="lookups">
+            <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.LookupEmaple1)')"><b>LookupEmaple1</b></li>
+            <li class="link" onclick="LoadLookupInfoPartial(this, '@((int)LookupTypeEnum.LookupEmaple2)')"><b>LookupEmaple2</b></li>
+        </ul>
+    </div>
+    <div class="col-10">
+        <div id="LookupInfo">
+            <!-- RENDER Lookup Info Here -->
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function LoadLookupInfoPartial(li, id) {
+        $('#LookupInfo').load('/Lookups/LoadLookupInfoPartial?lType=' + id + '');
+        $('.lookups .link').removeClass('active');
+        $(li).addClass('active');
+    }
+
+    function LoadLookupHeader(lType, id) {
+        $('#LookupHeader').load('/Lookups/LoadLookupHeader?lType=' + lType + '&id=' + id + '');
+    }
+
+    function LoadLookupList(lType) {
+        $('#LookupList').load('/Lookups/LoadLookupList?lType=' + lType + '');
+    }
+
+    function SaveLookup(lType) {
+        var lookup = {
+            Id: $('#LookupHeader').find('[name="Id"]').val(),
+            Name: $('#LookupHeader').find('[name = "Name"]').val(),
+        }
+        $.ajax({
+            url: '/Lookups/SaveLookup',
+            type: 'POST',
+            dataType: 'JSON',
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify({ lType: lType, lookup: lookup }),
+            success: function (data) {
+                if (!data.success)
+                    Toast('error', data.response);
+                else {
+                    Toast('success', data.response);
+                    LoadLookupList(lType);
+                    ClearLookupHeader();
+                }
+            }
+        });
+    }
+
+    function ClearLookupHeader() {
+        $('#LookupHeader').find('[name="Id"]').val('0');
+        $('#LookupHeader').find('[name="Name"]').val('');
+    }
+
+    function DeleteLookup(lType, id) {
+        SwalConfirm().then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '/Lookups/DeleteLookup',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    contentType: 'application/json;charset=utf-8',
+                    data: JSON.stringify({ lType: lType, id: id }),
+                    success: function (data) {
+                        if (!data.success)
+                            Toast('error', data.response);
+                        else {
+                            Toast('success', data.response);
+                            LoadLookupList(lType);
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>
