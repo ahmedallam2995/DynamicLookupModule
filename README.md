@@ -29,7 +29,7 @@ public class DynamicLookupContext : DbContext
     }
 
     ...
-    public DbSet<LookupEmaple2> NewLookupEmaple { get; set; }
+    public DbSet<NewLookupEmaple> NewLookupEmaple { get; set; }
 }
 ```
 - Open package manager console and type 
