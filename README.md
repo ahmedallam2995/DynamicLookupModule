@@ -58,5 +58,4 @@ public enum LookupTypeEnum
 ```
 
 ## Done!
-thats all, now you can run your application and see the magic happens.
-
+Thats all, now you can run your application and see the magic happens.
