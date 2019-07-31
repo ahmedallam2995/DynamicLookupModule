@@ -34,21 +34,26 @@ namespace DynamicLookupModule.Services
         public bool AddLookup<T>(T lookup) where T : class
         {
             _context.Add(lookup);
-            return _context.SaveChanges() > 0;
+            return SaveChanges();
         }
 
         public bool UpdateLookup<T>(T lookup) where T : class
         {
             _context.Update(lookup);
-            return _context.SaveChanges() > 0;
+            return SaveChanges();
         }
 
         public bool RemoveLookup<T>(int id) where T : class
         {
             _context.Remove(GetLookup<T>(id));
-            return _context.SaveChanges() > 0;
+            return SaveChanges();
         }
 
+        private bool SaveChanges()
+        {
+            try { return _context.SaveChanges() > 0; }
+            catch { return false; }
+        }
 
         #region HELPERS
         public string NameById(int Id)
