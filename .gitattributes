@@ -63,6 +63,5 @@
 #*.RTF   diff=astextplain
 
 
-*.js linguist-vendored
-*.css linguist-vendored
 
+*/wwwroot/ linguist-vendored
