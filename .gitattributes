@@ -63,6 +63,6 @@
 #*.RTF   diff=astextplain
 
 
-#*.js    diff=astextplain
-#*.css   diff=astextplain
-#*.html  diff=astextplain
+#*.js    
+#*.css   
+#*.html  
