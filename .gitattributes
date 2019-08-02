@@ -64,4 +64,5 @@
 
 
 *.js linguist-vendored
+*.css linguist-vendored
 
