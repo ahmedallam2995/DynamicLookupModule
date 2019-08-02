@@ -63,5 +63,5 @@
 #*.RTF   diff=astextplain
 
 
-*/wwwroot linguist-vendored=true
+*/wwwroot/ linguist-vendored=false
 
