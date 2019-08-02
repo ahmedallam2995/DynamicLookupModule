@@ -64,4 +64,5 @@
 
 
 
-*DynamicLookupModule/wwwroot/ linguist-vendored
+*.js linguist-vendored
+*.css linguist-vendored
