@@ -63,4 +63,6 @@
 #*.RTF   diff=astextplain
 
 
-#*wwwroot
+#*.js    diff=astextplain
+#*.css   diff=astextplain
+#*.html  diff=astextplain
